@@ -1,0 +1,33 @@
+package com.example.examplemod;
+
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.World;
+
+public class EntityMyBolt extends EntityThrowable {
+
+	private float explosionRadius = 3.0f;
+
+	public EntityMyBolt(World par1World) {
+		super(par1World);
+	}
+
+	public EntityMyBolt(World par1World, EntityLivingBase par2EntityLivingBase) {
+		super(par1World, par2EntityLivingBase);
+		//this.
+	}
+
+	public EntityMyBolt(World par1World, double par2, double par4, double par6) {
+		super(par1World, par2, par4, par6);
+	}
+
+	@Override
+	protected void onImpact(MovingObjectPosition p_70184_1_) {
+		// TODO Auto-generated method stub
+		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ,
+				(float) this.explosionRadius, true);
+		this.setDead();
+	}
+
+}
